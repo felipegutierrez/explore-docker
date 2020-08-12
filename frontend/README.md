@@ -15,6 +15,12 @@ Running tests
 docker run -it 7c886903ad00 npm run test
 docker-compose up --build
 ```
+Running in production
+```
+docker build .
+docker run -p 8080:80 CONTAINER_ID
+```
+and access [http://localhost:8080/](http://localhost:8080/)
 
 ## Available Scripts
 
