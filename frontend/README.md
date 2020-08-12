@@ -10,6 +10,11 @@ docker run -it -p 3000:3000 <CONTAINER_ID>
 docker run -it -p 3000:3000 -v /app/node_modules -v $(pwd):/app <CONTAINER_ID>
 docker-compose up
 ```
+Running tests
+```
+docker run -it 7c886903ad00 npm run test
+docker-compose up --build
+```
 
 ## Available Scripts
 
