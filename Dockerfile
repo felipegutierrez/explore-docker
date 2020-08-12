@@ -1,7 +1,7 @@
 # Build the image with the command on the current directory.
-# use: "docker build ."
+# use: "docker build -t felipeogutierrez/redis-image:latest ."
 # Execute the image
-# use: "docker run <CONTAINER_ID>"
+# use: "docker run felipeogutierrez/redis-image"
 
 # Use an existing docker image as a base
 FROM alpine
