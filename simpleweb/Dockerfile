@@ -11,8 +11,9 @@ FROM node:alpine
 WORKDIR /usr/app
 
 # copy all the files on the current directory to the container and install npm dependency
-COPY ./ ./
+COPY ./package.json ./
 RUN npm install
+COPY ./ ./
 
 # tell the image what to do when it starts as a container
 CMD ["npm", "start"]
