@@ -12,7 +12,7 @@ const client = redis.createClient({
 client.set('visits', 0);
 
 app.get('/', (req, res) => {
-    process.exit(0); // test the docker crash and recover with process
+    // process.exit(0); // test the docker crash and recover with process
     client.get('visits', (err, visits) => {
         res.send('Hi there! Number of visits is ' + visits);
         client.set('visits', parseInt(visits) + 1);

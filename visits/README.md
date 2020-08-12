@@ -9,4 +9,5 @@ and access [http://localhost:4081/](http://localhost:4081/).
 
 ```
 docker-compose up --build
+docker-compose ps
 ```
