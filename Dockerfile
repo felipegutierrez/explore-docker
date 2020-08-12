@@ -1,3 +1,8 @@
+# Build the image with the command on the current directory.
+# use: "docker build ."
+# Execute the image
+# use: "docker run <CONTAINER_ID>"
+
 # Use an existing docker image as a base
 FROM alpine
 
