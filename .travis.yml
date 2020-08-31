@@ -3,6 +3,10 @@ sudo: required
 services:
   - docker
 
+branches:
+  only:
+  - master
+
 before_install:
   - cd frontend
   - docker build -t felipegutierrez/explore-docker/frontend -f Dockerfile.dev .
