@@ -8,5 +8,4 @@ before_install:
   - docker build -t felipegutierrez/explore-docker/frontend -f Dockerfile.dev .
 
 script:
-  - cd frontend
   - docker run -e CI=true felipegutierrez/explore-docker/frontend npm run test -- --coverage
