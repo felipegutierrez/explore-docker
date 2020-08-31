@@ -1,0 +1,12 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - cd frontend
+  - docker build -t felipegutierrez/explore-docker/frontend -f Dockerfile.dev .
+
+script:
+  - cd frontend
+  - docker run -e CI=true felipegutierrez/explore-docker/frontend npm run test -- --coverage
