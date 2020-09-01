@@ -16,10 +16,10 @@ script:
   - docker run -e CI=true felipegutierrez/explore-docker/complex npm run test -- --coverage
 
 after_success:
-  - docker build -t felipegutierrez/explore-docker/complex/client ./client
-  - docker build -t felipegutierrez/explore-docker/complex/nginx ./nginx
-  - docker build -t felipegutierrez/explore-docker/complex/server ./server
-  - docker build -t felipegutierrez/explore-docker/complex/worker ./worker
+  - docker build -t felipegutierrez/explore-docker/complex/client ./complex/client
+  - docker build -t felipegutierrez/explore-docker/complex/nginx ./complex/nginx
+  - docker build -t felipegutierrez/explore-docker/complex/server ./complex/server
+  - docker build -t felipegutierrez/explore-docker/complex/worker ./complex/worker
   # Log in to the docker CLI. Log in to docker in a single command line
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # take the images and push them to docker.hub
