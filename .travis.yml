@@ -16,14 +16,14 @@ script:
   - docker run -e CI=true felipeogutierrez/explore-docker/complex npm test
 
 after_success:
-  - docker build -t felipeogutierrez/explore-docker/complex/client ./complex/client
-  - docker build -t felipeogutierrez/explore-docker/complex/nginx ./complex/nginx
-  - docker build -t felipeogutierrez/explore-docker/complex/server ./complex/server
-  - docker build -t felipeogutierrez/explore-docker/complex/worker ./complex/worker
+  - docker build -t felipeogutierrez/explore-docker-complex-client ./complex/client
+  - docker build -t felipeogutierrez/explore-docker-complex-nginx ./complex/nginx
+  - docker build -t felipeogutierrez/explore-docker-complex-server ./complex/server
+  - docker build -t felipeogutierrez/explore-docker-complex-worker ./complex/worker
   # Log in to the docker CLI. Log in to docker in a single command line
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # take the images and push them to docker.hub
-  - docker push felipeogutierrez/explore-docker/complex/client
-  - docker push felipeogutierrez/explore-docker/complex/nginx
-  - docker push felipeogutierrez/explore-docker/complex/server
-  - docker push felipeogutierrez/explore-docker/complex/worker
+  - docker push felipeogutierrez/explore-docker-complex-client
+  - docker push felipeogutierrez/explore-docker-complex-nginx
+  - docker push felipeogutierrez/explore-docker-complex-server
+  - docker push felipeogutierrez/explore-docker-complex-worker
