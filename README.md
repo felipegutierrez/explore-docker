@@ -7,3 +7,36 @@ The Docker compose images can be found at [https://hub.docker.com/u/felipeogutie
  - [explore-docker-complex-server](https://hub.docker.com/r/felipeogutierrez/explore-docker-complex-server)
  - [explore-docker-complex-worker](https://hub.docker.com/r/felipeogutierrez/explore-docker-complex-worker)
  - [explore-docker-complex-nginx](https://hub.docker.com/r/felipeogutierrez/explore-docker-complex-nginx)
+
+### Docker images inside Kubernetes
+Instanll Kubernetes on the local machine following this [link](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux).
+```
+$ kubectl version
+$ minikube version
+$ minikube start
+$ minikube status
+$ kubectl version
+$ kubectl cluster-info
+```
+Create a Pod on kubernetes:
+```
+$ cd simplek8s/
+simplek8s$ ll
+-rw-rw-r-- 1 felipe felipe  189 Sep  1 14:37 client-node-port.yaml
+-rw-rw-r-- 1 felipe felipe  206 Sep  1 14:07 client-pod.yaml
+simplek8s$ kubectl apply -f client-pod.yaml 
+pod/client-pod created
+simplek8s$ kubectl apply -f client-node-port.yaml 
+service/client-node-port created
+simplek8s$ kubectl get pods
+NAME         READY   STATUS    RESTARTS   AGE
+client-pod   1/1     Running   0          2m9s
+simplek8s$ kubectl get services
+NAME               TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+client-node-port   NodePort    10.111.99.76   <none>        3050:31515/TCP   62s
+kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP          97m
+simplek8s$ minikube ip
+172.17.0.3
+```
+Then access [http://172.17.0.3:31515/](http://172.17.0.3:31515/).
+
