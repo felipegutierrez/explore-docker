@@ -24,19 +24,25 @@ $ cd simplek8s/
 simplek8s$ ll
 -rw-rw-r-- 1 felipe felipe  189 Sep  1 14:37 client-node-port.yaml
 -rw-rw-r-- 1 felipe felipe  206 Sep  1 14:07 client-pod.yaml
-simplek8s$ kubectl apply -f client-pod.yaml 
+$ kubectl apply -f client-pod.yaml 
 pod/client-pod created
-simplek8s$ kubectl apply -f client-node-port.yaml 
+$ kubectl apply -f client-node-port.yaml 
 service/client-node-port created
-simplek8s$ kubectl get pods
+$ kubectl get pods -o wide
 NAME         READY   STATUS    RESTARTS   AGE
 client-pod   1/1     Running   0          2m9s
-simplek8s$ kubectl get services
+$ kubectl get services
 NAME               TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
 client-node-port   NodePort    10.111.99.76   <none>        3050:31515/TCP   62s
 kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP          97m
-simplek8s$ minikube ip
+$ minikube ip
 172.17.0.3
+$ kubectl describe pod client-pod
+$ kubectl describe service client-node-port
+$ kubectl delete -f client-pod.yaml
+$ kubectl get pods -o wide
+$ kubectl apply -f client-deployment.yaml
+$ kubectl get deployments
 ```
 Then access [http://172.17.0.3:31515/](http://172.17.0.3:31515/).
 
