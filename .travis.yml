@@ -13,7 +13,7 @@ before_install:
 
 script:
   - docker run -e CI=true felipegutierrez/explore-docker/frontend npm run test -- --coverage
-  - docker run -e CI=true felipegutierrez/explore-docker/complex npm run test -- --coverage
+  - docker run -e CI=true felipegutierrez/explore-docker/complex npm test
 
 after_success:
   - docker build -t felipegutierrez/explore-docker/complex/client ./complex/client
