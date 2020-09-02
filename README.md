@@ -51,6 +51,15 @@ Then access [http://172.17.0.3:31515/](http://172.17.0.3:31515/).
 
 ## Kubernetes with docker images
 This is the ![complex-kubernetes](complex-kubernetes) project.
+Create the secretes:
+```
+$ kubectl create secret generic pgpassword --from-literal PGPASSWORD=pgpassword
+secret/pgpassword created
+$ kubectl get secrets
+NAME                  TYPE                                  DATA   AGE
+default-token-fddxd   kubernetes.io/service-account-token   3      23h
+pgpassword            Opaque                                1      10s
+```
 ```
 $ kubectl get deployments
 $ kubectl delete deployment client-deployment
