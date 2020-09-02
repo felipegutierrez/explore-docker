@@ -8,8 +8,9 @@ The Docker compose images can be found at [https://hub.docker.com/u/felipeogutie
  - [explore-docker-complex-worker](https://hub.docker.com/r/felipeogutierrez/explore-docker-complex-worker)
  - [explore-docker-complex-nginx](https://hub.docker.com/r/felipeogutierrez/explore-docker-complex-nginx)
 
-### Docker images inside Kubernetes
-Instanll Kubernetes on the local machine following this [link](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux).
+## Kubernetes demo
+
+This is the ![complex](complex) project. Instanll Kubernetes on the local machine following this [link](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux).
 ```
 $ kubectl version
 $ minikube version
@@ -37,6 +38,8 @@ client-node-port   NodePort    10.111.99.76   <none>        3050:31515/TCP   62s
 kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP          97m
 $ minikube ip
 172.17.0.3
+$ eval $(minikube docker-env)
+$ docker ps
 $ kubectl describe pod client-pod
 $ kubectl describe service client-node-port
 $ kubectl delete -f client-pod.yaml
@@ -45,4 +48,17 @@ $ kubectl apply -f client-deployment.yaml
 $ kubectl get deployments
 ```
 Then access [http://172.17.0.3:31515/](http://172.17.0.3:31515/).
+
+## Kubernetes with docker images
+This is the ![complex-kubernetes](complex-kubernetes) project.
+```
+$ kubectl get deployments
+$ kubectl delete deployment client-deployment
+$ kubectl get pods
+$ kubectl get services
+$ kubectl delete service client-node-port
+$ docker ps
+$ kubectl apply -f k8s
+```
+
 
