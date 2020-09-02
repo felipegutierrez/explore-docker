@@ -77,6 +77,9 @@ $ kubectl get services
 $ kubectl delete service client-node-port
 $ docker ps
 $ kubectl apply -f k8s
+$ minikube ip
+172.17.0.2
 ```
+Access the application at [http://172.17.0.2/](http://172.17.0.2/) or using the IP from the command `minikube ip`.
 
 
