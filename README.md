@@ -60,6 +60,15 @@ NAME                  TYPE                                  DATA   AGE
 default-token-fddxd   kubernetes.io/service-account-token   3      23h
 pgpassword            Opaque                                1      10s
 ```
+Enable the [Kubernetes ingress service](https://kubernetes.github.io/ingress-nginx/deploy/):
+```
+$ minikube addons enable ingress
+🔎  Verifying ingress addon...
+🌟  The 'ingress' addon is enabled
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.35.0/deploy/static/provider/baremetal/deploy.yaml
+...
+```
+
 ```
 $ kubectl get deployments
 $ kubectl delete deployment client-deployment
