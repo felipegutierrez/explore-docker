@@ -10,7 +10,7 @@ The Docker compose images can be found at [https://hub.docker.com/u/felipeogutie
 
 ## Kubernetes demo
 
-This is the ![complex](complex) project. Instanll Kubernetes on the local machine following this [link](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux).
+This is the [complex](complex) project. Instanll Kubernetes on the local machine following this [link](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux).
 ```
 $ kubectl version
 $ minikube version
@@ -50,8 +50,7 @@ $ kubectl get deployments
 Then access [http://172.17.0.3:31515/](http://172.17.0.3:31515/).
 
 ## Kubernetes with docker images
-This is the ![complex-kubernetes](complex-kubernetes) project.
-Create the secretes:
+This is the [complex-kubernetes](complex-kubernetes) project. Create the secretes:
 ```
 $ kubectl create secret generic pgpassword --from-literal PGPASSWORD=pgpassword
 secret/pgpassword created
