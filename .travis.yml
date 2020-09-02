@@ -40,3 +40,4 @@ after_success:
   - docker push felipeogutierrez/explore-docker-complex-nginx
   - docker push felipeogutierrez/explore-docker-complex-server
   - docker push felipeogutierrez/explore-docker-complex-worker
+  - kubectl apply -f complex-kubernetes/k8s
