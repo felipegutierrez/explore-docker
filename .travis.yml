@@ -1,10 +1,11 @@
 language: generic
 sudo: required
-env:
-  - CHANGE_MINIKUBE_NONE_USER=true
 services:
   - docker
-
+env:
+  - CHANGE_MINIKUBE_NONE_USER=true
+  global:
+    - SHA=$(git rev-parse HEAD)
 branches:
   only:
   - master
@@ -29,15 +30,22 @@ script:
   - docker run -e CI=true felipeogutierrez/explore-docker/complex npm test
 
 after_success:
-  - docker build -t felipeogutierrez/explore-docker-complex-client ./complex/client
-  - docker build -t felipeogutierrez/explore-docker-complex-nginx ./complex/nginx
-  - docker build -t felipeogutierrez/explore-docker-complex-server ./complex/server
-  - docker build -t felipeogutierrez/explore-docker-complex-worker ./complex/worker
+  - docker build -t felipeogutierrez/explore-docker-complex-client:latest -t felipeogutierrez/explore-docker-complex-client:$SHA ./complex/client
+  - docker build -t felipeogutierrez/explore-docker-complex-nginx:latest -t felipeogutierrez/explore-docker-complex-nginx:$SHA ./complex/nginx
+  - docker build -t felipeogutierrez/explore-docker-complex-server:latest -t felipeogutierrez/explore-docker-complex-server:$SHA ./complex/server
+  - docker build -t felipeogutierrez/explore-docker-complex-worker:latest -t felipeogutierrez/explore-docker-complex-worker:$SHA ./complex/worker
   # Log in to the docker CLI. Log in to docker in a single command line
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # take the images and push them to docker.hub
-  - docker push felipeogutierrez/explore-docker-complex-client
-  - docker push felipeogutierrez/explore-docker-complex-nginx
-  - docker push felipeogutierrez/explore-docker-complex-server
-  - docker push felipeogutierrez/explore-docker-complex-worker
+  - docker push felipeogutierrez/explore-docker-complex-client:latest
+  - docker push felipeogutierrez/explore-docker-complex-nginx:latest
+  - docker push felipeogutierrez/explore-docker-complex-server:latest
+  - docker push felipeogutierrez/explore-docker-complex-worker:latest
+  - docker push felipeogutierrez/explore-docker-complex-client:$SHA
+  - docker push felipeogutierrez/explore-docker-complex-nginx:$SHA
+  - docker push felipeogutierrez/explore-docker-complex-server:$SHA
+  - docker push felipeogutierrez/explore-docker-complex-worker:$SHA
   - kubectl apply -f complex-kubernetes/k8s
+  - kubectl set image deployments/client-deployment client=felipeogutierrez/explore-docker-complex-client:$SHA
+  - kubectl set image deployments/server-deployment server=felipeogutierrez/explore-docker-complex-server:$SHA
+  - kubectl set image deployments/worker-deployment worker=felipeogutierrez/explore-docker-complex-worker:$SHA
